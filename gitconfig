@@ -1,0 +1,40 @@
+[user]
+    name = Johnny Gaffey 
+    email = john@socialgrowthtechnologies.com
+[github]
+    user = johnnygaffey
+[core]
+    editor = vim
+    excludesfile = ~/.gitignore_global
+[merge]
+    tool = vimdiff
+[color]
+    status = auto
+    branch = auto
+    interactive = auto
+    diff = auto
+    grep = auto
+    ui = auto
+[diff]
+    tool = vimdiff
+[difftool]
+    prompt = false
+[log]
+    decorate = full
+[alias]
+    glog = log --graph
+    st = status
+    ci = commit -a
+    up = checkout
+    co = checkout
+    sum = status
+    di = diff
+    bo = branch
+    bookmarks = branch
+    branches = branch
+    o = log --graph origin..HEAD
+    out = log --graph origin..HEAD
+    outgoing = log --graph origin..HEAD
+    vimdiff = difftool --tool=vimdiff --no-prompt
+[push]
+    default = current

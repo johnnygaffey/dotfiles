@@ -102,7 +102,7 @@ Bundle 'nathanaelkane/vim-indent-guides'
 if filereadable(expand(g:vim_home_path . "/bundle/vim-fax/vimrc.vim"))
     execute "source " . g:vim_home_path . "/bundle/vim-fax/vimrc.vim"
 endif
- --------------------------------------------------------------------------
+"  --------------------------------------------------------------------------
 "  " CUSTOM AUTOCMDS
 "  "
 "  --------------------------------------------------------------------------
@@ -141,21 +141,29 @@ autocmd BufWinEnter *.* silent loadview
 colorscheme jungle
 
 highlight SpellBad term=reverse ctermbg=1
+highlight OverLength      ctermbg=red
+highlight ColorColumn     ctermbg=darkgray
+highlight ExtraWhitespace ctermbg=red guibg=red
 
 " Cursor / visual settings
 set cursorline         " Show a line for the cursor
-set colorcolumn=80     " Show a column at 80 char mark
+"set columns=80
 set laststatus=2       " Always show status line
 set showmode           " Show the current mode
 
 " Backup/Undo settings
 execute "set directory=" . g:vim_home_path . "/swap"
 execute "set backupdir=" . g:vim_home_path . "/backup"
-execute "set undodir=" . g:vim_home_path . "/undo"
 set backup
-set undofile
 set writebackup
 
+
+if v:version >= 730
+    set colorcolumn=81
+    execute "set undodir=" . g:vim_home_path . "/undo"
+    set undofile
+    set undoreload=10000
+endif
 "------------------------------------------------
 "" Plugin settings
 "------------------------------------------------
