@@ -98,6 +98,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'walm/jshint.vim'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'flazz/vim-colorschemes'
 
 if filereadable(expand(g:vim_home_path . "/bundle/vim-fax/vimrc.vim"))
     execute "source " . g:vim_home_path . "/bundle/vim-fax/vimrc.vim"
@@ -138,7 +139,7 @@ autocmd BufWinEnter *.* silent loadview
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLOR SCHEME
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-colorscheme jungle
+colorscheme 256-jungle
 
 highlight SpellBad term=reverse ctermbg=1
 highlight OverLength      ctermbg=red
