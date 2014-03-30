@@ -2,7 +2,7 @@ syntax enable                    " Turn on Syntax highlighting
 
 " auto indenting
 set et
-set sw=4                         " shift width is two, yes two
+set sw=4                         " shift width is four
 set softtabstop=4                " two!
 set expandtab                    " all tabs are actually spaces
 set smartindent
@@ -23,9 +23,13 @@ set backspace=indent,eol,start   " Fixes a problem where I cannot delete text th
 set whichwrap=b,s,h,l,<,>,[,]    " Wrap on other things
 set report=0                     " Tell us about changes
 set nostartofline                " don't jump to the start of a line when scrolling
+set wildignore+=.git,.hg,.svn " Ignore version control repos
+set wildignore+=*.pyc         " Ignore python compiled files
+set wildignore+=*.class       " Ignore java compiled files
+set wildignore+=*.swp         " Ignore vim backupskk
 
 " ----------------------------------------------------------------------------
-" Visual stoof
+" Visual stuff
 " ----------------------------------------------------------------------------
 set background=dark              " We use a dark terminal so we can play nethack
 set mat=5                        " show matching brackets for 1/10 of a second
@@ -65,13 +69,40 @@ filetype indent on                                   " Let's try to get rid of b
 " ---------------------------------------------------------------------------
 " Plugins
 " ---------------------------------------------------------------------------
-call pathogen#infect()           " Load pathogen
-call pathogen#helptags()         " Generate dthe command-t help tags
-filetype on                      " Turn on filetype
-filetype plugin on               " Turn on the filetype plugin so we can get specific
-let g:pylint_onwrite=0           " I don't want pylint to change things for me automatically
+set nocompatible
 
-" --------------------------------------------------------------------------
+
+" vundle configuration "
+if has("win32")
+    let g:vim_home_path = "~/vimfiles"
+else
+    let g:vim_home_path = "~/.vim"
+endif
+
+execute "set rtp+=" . g:vim_home_path . "/bundle/vundle/"
+let g:vundle_default_git_proto = 'https'
+call vundle#rc(g:vim_home_path. "/bundle")
+ 
+" Bundles to install
+Bundle 'gmarik/vundle'
+
+" Syntax/filetype detection
+Bundle 'saltstack/salt-vim'
+
+" Helpful plugins
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'mileszs/ack.vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
+Bundle 'walm/jshint.vim'
+Bundle 'davidhalter/jedi-vim'
+Bundle 'nathanaelkane/vim-indent-guides'
+
+if filereadable(expand(g:vim_home_path . "/bundle/vim-fax/vimrc.vim"))
+    execute "source " . g:vim_home_path . "/bundle/vim-fax/vimrc.vim"
+endif
+ --------------------------------------------------------------------------
 "  " CUSTOM AUTOCMDS
 "  "
 "  --------------------------------------------------------------------------
@@ -95,20 +126,6 @@ endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" RENAME CURRENT FILE
- """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! RenameFile()
-  let old_name = expand('%')
-  let new_name = input('New file name: ', expand('%'), 'file')
-  if new_name != '' && new_name != old_name
-    exec ':saveas ' . new_name
-    exec ':silent !rm ' . old_name
-    redraw!
-  endif
-endfunction
-map <leader>n :call RenameFile()<cr>
-
 """"""""""""""
 "Code Folding"
 """"""""""""""
@@ -124,3 +141,35 @@ autocmd BufWinEnter *.* silent loadview
 colorscheme jungle
 
 highlight SpellBad term=reverse ctermbg=1
+
+" Cursor / visual settings
+set cursorline         " Show a line for the cursor
+set colorcolumn=80     " Show a column at 80 char mark
+set laststatus=2       " Always show status line
+set showmode           " Show the current mode
+
+" Backup/Undo settings
+execute "set directory=" . g:vim_home_path . "/swap"
+execute "set backupdir=" . g:vim_home_path . "/backup"
+execute "set undodir=" . g:vim_home_path . "/undo"
+set backup
+set undofile
+set writebackup
+
+"------------------------------------------------
+"" Plugin settings
+"------------------------------------------------
+
+" SuperTab settings
+let g:SuperTabDefaultCompletionType = "context"
+
+" NerdTree settings
+ let g:nerdtree_tabs_open_on_console_startup = 1
+"
+" Synstastic settings
+ let g:syntastic_python_checkers=['pylint', 'flake8']
+ let g:syntastic_python_flake8_args='--config ~/.flake8'
+ let g:syntastic_python_pylint_args='--rcfile .pylintrc --msg-template="{path}:{line}: [{msg_id}] {msg}" -r n'
+
+" Indent Guides
+let g:indent_guides_guide_size = 1
