@@ -1,4 +1,37 @@
+set nocompatible
+filetype off
+
+" vundle configuration "
+if has("win32")
+    let g:vim_home_path = "~/vimfiles"
+else
+    let g:vim_home_path = "~/.vim"
+endif
+
+execute "set rtp+=" . g:vim_home_path . "/bundle/vundle/"
+let g:vundle_default_git_proto = 'https'
+call vundle#rc(g:vim_home_path. "/bundle")
+ 
+" Bundles to install
+Bundle 'gmarik/vundle'
+
+" Syntax/filetype detection
+Bundle 'saltstack/salt-vim'
+
+" Helpful plugins
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'mileszs/ack.vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
+Bundle 'walm/jshint.vim'
+Bundle 'davidhalter/jedi-vim'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'flazz/vim-colorschemes'
+
+filetype plugin indent on
 syntax enable                    " Turn on Syntax highlighting
+
 
 " auto indenting
 set et
@@ -64,45 +97,10 @@ autocmd FileType python setl sw=4                    " For python, the shift wid
 autocmd FileType python set softtabstop=4            " For python, tabs are four spaces!
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class " Autoindent my new blocks in python
 highlight SpellBad term=reverse ctermbg=1
-filetype indent on                                   " Let's try to get rid of bad indenting in python
 
 " ---------------------------------------------------------------------------
 " Plugins
 " ---------------------------------------------------------------------------
-set nocompatible
-
-
-" vundle configuration "
-if has("win32")
-    let g:vim_home_path = "~/vimfiles"
-else
-    let g:vim_home_path = "~/.vim"
-endif
-
-execute "set rtp+=" . g:vim_home_path . "/bundle/vundle/"
-let g:vundle_default_git_proto = 'https'
-call vundle#rc(g:vim_home_path. "/bundle")
- 
-" Bundles to install
-Bundle 'gmarik/vundle'
-
-" Syntax/filetype detection
-Bundle 'saltstack/salt-vim'
-
-" Helpful plugins
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'mileszs/ack.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'walm/jshint.vim'
-Bundle 'davidhalter/jedi-vim'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'flazz/vim-colorschemes'
-
-if filereadable(expand(g:vim_home_path . "/bundle/vim-fax/vimrc.vim"))
-    execute "source " . g:vim_home_path . "/bundle/vim-fax/vimrc.vim"
-endif
 "  --------------------------------------------------------------------------
 "  " CUSTOM AUTOCMDS
 "  "
@@ -182,3 +180,5 @@ let g:SuperTabDefaultCompletionType = "context"
 
 " Indent Guides
 let g:indent_guides_guide_size = 1
+
+let g:NERDTreeDirArrows=0
