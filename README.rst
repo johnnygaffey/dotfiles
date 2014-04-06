@@ -1,3 +1,6 @@
-These are my dotfiles.
+Johnny Gaffey's Dotfiles
+========================
 
-to install run install.sh
+How to install:
+    clone the repo.
+    run: bash install.sh
