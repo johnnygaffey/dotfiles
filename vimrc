@@ -26,6 +26,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'walm/jshint.vim'
 Bundle 'davidhalter/jedi-vim'
+Bundle 'ervandew/supertab'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'flazz/vim-colorschemes'
 
@@ -44,7 +45,6 @@ set smartindent
 " ----------------------------------------------------------------------------
 " UI
 " ----------------------------------------------------------------------------
-set ruler                        " show me the line,column my cursor is on
 set noshowcmd                    " Don't display incomplete commands
 set nolazyredraw                 " If we're going to redraw, lets not be lazy about it.
 syntax sync minlines=1000        " Look for synchronization points 1000 lines before the current position in the file.
@@ -89,7 +89,6 @@ vnoremap <tab> %
 nnoremap <silent> ss :split .
 nnoremap <silent> vv :vsplit .
 
-
 " ---------------------------------------------------------------------------
 " Python Stuff
 " ---------------------------------------------------------------------------
@@ -110,21 +109,6 @@ autocmd BufReadPost *
   \   exe "normal g`\"" |
   \ endif
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" MULTIPURPOSE TAB KEY
-" " Indent if we're at the beginning of a line. Else, do completion.
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! InsertTabWrapper()
-  let col = col('.') - 1
-  if !col || getline('.')[col - 1] !~ '\k'
-    return "\<tab>"
-  else
-    return "\<c-p>"
-  endif
-endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-inoremap <s-tab> <c-n>
-
 """"""""""""""
 "Code Folding"
 """"""""""""""
@@ -139,10 +123,21 @@ autocmd BufWinEnter *.* silent loadview
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 colorscheme 256-jungle
 
-highlight SpellBad term=reverse ctermbg=1
 highlight OverLength      ctermbg=red
 highlight ColorColumn     ctermbg=darkgray
 highlight ExtraWhitespace ctermbg=red guibg=red
+"
+"" Show extra which space and over 80
+"match OverLength /\%80v.\+/
+"match ExtraWhitespace /\s\+$/
+"autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+"autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+"autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+"autocmd BufWinLeave * call clearmatches()
+
+" Easier visual indent
+vnoremap < <gv
+vnoremap > >gv
 
 " Cursor / visual settings
 set cursorline         " Show a line for the cursor
