@@ -97,6 +97,9 @@ autocmd FileType python set softtabstop=4            " For python, tabs are four
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class " Autoindent my new blocks in python
 highlight SpellBad term=reverse ctermbg=1
 
+let mapleader = ","
+map <leader>m iimport ipdb; ipdb.set_trace()
+
 " ---------------------------------------------------------------------------
 " Plugins
 " ---------------------------------------------------------------------------
