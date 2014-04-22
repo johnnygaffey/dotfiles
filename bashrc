@@ -1,8 +1,3 @@
-source ~/.bash/aliases
-source ~/.bash/completions
-source ~/.bash/paths
-source ~/.bash/hg-completion
-
 #vim mode in the shell
 set -o vi
 
