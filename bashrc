@@ -29,6 +29,7 @@ alias tree='tree -Csuh'          #alternative to recursive ls
 alias df='df -kTh'
 alias path='echo -e ${PATH//:/\\n}'
 alias grep='grep --color=auto'
+alias byobu='byobu-screen'
 
 # Silly sudo
 alias salt='sudo salt'
