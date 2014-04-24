@@ -62,14 +62,14 @@ trackers.numwant.set = -1
 check_hash = yes 
 
 # default directory to save the downloaded torrents
-# directory.default.set = /home/johnnyg_qma/downloads
-directory = /home/johnnyg_qma/downloads/manual
+# directory.default.set = /home/johnnyg/downloads
+directory = /home/johnnyg/downloads/manual
  
 # default session directory. make sure you don't run multiple instances 
 # of rtorrent using the same session directory 
 # perhaps using a relative path? 
-# session.path.set = /home/johnnyg_qma/downloads/.session
-session = /home/johnnyg_qma/downloads/.session
+# session.path.set = /home/johnnyg/downloads/.session
+session = /home/johnnyg/downloads/.session
  
  
 # Connection Settings 
@@ -134,7 +134,7 @@ peer_exchange = no
 # stop, close or remove the torrents that are tied to filenames that have been deleted 
  
 # watch a directory for new torrents, and stop those that have been deleted
-schedule = watch_directory,5,5,load_start=/home/johnnyg_qma/downloads/watch/*.torrent
+schedule = watch_directory,5,5,load_start=/home/johnnyg/downloads/watch/*.torrent
 schedule = untied_directory,5,5,stop_untied= 
  
 # close torrents when diskspace is low. */ 
@@ -153,7 +153,7 @@ schedule = low_diskspace,5,60,close_low_diskspace=10000M
  
 # when the torrent finishes, it executes "mv -n <base_path> /home/$NEWUSER1/Download/" 
 # and then sets the destination directory to "/home/$NEWUSER1/Download/". (0.7.7+)
-# on_finished = move_complete,"execute=mv,-u,$d.get_base_path=,/home/johnnyg_qma/downloads/complete/ ;d.set_directory=/home/johnnyg_qma/downloads/complete/"
+# on_finished = move_complete,"execute=mv,-u,$d.get_base_path=,/home/johnnyg/downloads/complete/ ;d.set_directory=/home/johnnyg_qma/downloads/complete/"
  
 # network.scgi.open_port = 127.0.0.1:51102 
 scgi_port = 127.0.0.1:51102
