@@ -88,6 +88,7 @@ vnoremap <tab> %
 "short cuts for common split commands.
 nnoremap <silent> ss :split .
 nnoremap <silent> vv :vsplit .
+nnoremap <silent> `` :%s/^\s*/&&
 
 " ---------------------------------------------------------------------------
 " Python Stuff
@@ -98,7 +99,7 @@ autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,
 highlight SpellBad term=reverse ctermbg=1
 
 let mapleader = ","
-map <leader>m iimport ipdb; ipdb.set_trace()
+map <leader>m oimport ipdb; ipdb.set_trace()
 
 " ---------------------------------------------------------------------------
 " Plugins
