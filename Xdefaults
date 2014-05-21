@@ -1,0 +1,60 @@
+URxvt.perl-ext: default,url-select
+URxvt.keysym.C-i: perl:url-select:select_next
+URxvt.url-select.launcher: /usr/bin/firefox -new-tab
+URxvt.url-select.underline: true
+URxvt.scrollsytle:xterm
+URxvt.scrollBar:false
+URxvt.font:-*-terminus-medium-*-*-*-12-*-*-*-*-*-*-*
+URxvt.urgentOnBell: true
+! :Bind C-0, C-+ and C-= to activate small, medium, and big font size resp.
+URxvt.keysym.C-0: command:\033]710;-*-terminus-medium-*-*-*-12-*-*-*-*-*-*-*\007
+URxvt.keysym.C-minus: command:\033]710;-*-terminus-medium-*-*-*-16-*-*-*-*-*-*-*\007
+URxvt.keysym.C-equal: command:\033]710;-*-terminus-medium-*-*-*-20-*-*-*-*-*-*-*\007
+URxvt.keysym.C-9: command:\033]710;-*-terminus-medium-*-*-*-11-*-*-*-*-*-*-*\007
+
+! Normal
+! color0    black
+! color1    red
+! color2    green
+! color3    yellow
+! color4    blue
+! color5    purple
+! color6    cyan
+! color7    white
+
+urxvt*color0:    #000000
+urxvt*color1:    #e9897c
+urxvt*color2:    #b6e77d
+urxvt*color3:    #ecebbe
+urxvt*color4:    #a9cdeb
+urxvt*color5:    #ea96eb
+urxvt*color7:    #f2f2f2
+
+! Light
+! color8    black
+! color9    red
+! color10    green
+! color11    yellow
+! color12    blue
+! color13    purple
+! color14    cyan
+! color15    white
+
+urxvt*color8:    #747474
+urxvt*color9:    #f99286
+urxvt*color10:    #c3f786
+urxvt*color11:    #fcfbcc
+urxvt*color12:    #b6defb
+urxvt*color13:    #fba1fb
+urxvt*color15:    #e2e2e2
+
+URxvt.foreground: #b6e77d
+
+URxvt.transparent:true
+URxvt.shading:30
+URxvt.background:black
+URxvt.tint:black
+! URxvt.depth: 32
+! URxvt.background: [70]#000000
+
+Xft.dpi:96
