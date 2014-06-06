@@ -6,7 +6,7 @@ if [ -f ~/.localrc ]; then
   source ~/.localrc
 fi
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH="/sbin:/usr/sbin:$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # Aliases
 alias ls='ls -F --color=auto'    #colors
@@ -24,7 +24,6 @@ alias tree='tree -Csuh'          #alternative to recursive ls
 alias df='df -kTh'
 alias path='echo -e ${PATH//:/\\n}'
 alias grep='grep --color=auto'
-alias byobu='byobu-screen'
 
 # Silly sudo
 alias salt='sudo salt'
@@ -88,3 +87,5 @@ export EDITOR=vim
 export PIP_REQUIRE_VIRTUALENV=true
 export PIP_RESPECT_VIRTUALENV=true
 
+
+unset LD_PRELOAD
