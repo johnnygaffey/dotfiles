@@ -86,6 +86,10 @@ export EDITOR=vim
 # Things for python virtualenv
 export PIP_REQUIRE_VIRTUALENV=true
 export PIP_RESPECT_VIRTUALENV=true
-
+[[ -f /usr/bin/urxvt ]] || export TERM=xterm-256color
 
 unset LD_PRELOAD
+alias runserver="python manage.py runserver"
+alias prunserver="python manage.py runserver 0.0.0.0:8000"
+alias mcb_runserver="python manage_website_coupon_buddy.py runserver"
+alias mcb_prunserver="python manage_website_coupon_buddy.py runserver 0.0.0.0:8182"
