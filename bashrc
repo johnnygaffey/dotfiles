@@ -93,3 +93,5 @@ alias runserver="python manage.py runserver"
 alias prunserver="python manage.py runserver 0.0.0.0:8000"
 alias mcb_runserver="python manage_website_coupon_buddy.py runserver"
 alias mcb_prunserver="python manage_website_coupon_buddy.py runserver 0.0.0.0:8182"
+
+[[ -f /etc/profile.d/bash-completion.sh ]] && source /etc/profile.d/bash-completion.sh

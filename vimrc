@@ -131,13 +131,6 @@ highlight OverLength      ctermbg=red
 highlight ColorColumn     ctermbg=darkgray
 highlight ExtraWhitespace ctermbg=red guibg=red
 "
-"" Show extra which space and over 80
-"match OverLength /\%80v.\+/
-"match ExtraWhitespace /\s\+$/
-"autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-"autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-"autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-"autocmd BufWinLeave * call clearmatches()
 
 " Easier visual indent
 vnoremap < <gv
@@ -145,7 +138,6 @@ vnoremap > >gv
 
 " Cursor / visual settings
 set cursorline         " Show a line for the cursor
-"set columns=80
 set laststatus=2       " Always show status line
 set showmode           " Show the current mode
 
@@ -156,11 +148,11 @@ set backup
 set writebackup
 
 
-if v:version >= 730
-    set colorcolumn=81
-    execute "set undodir=" . g:vim_home_path . "/undo"
-    set undofile
-    set undoreload=10000
+if exists('+colorcolumn')
+  set colorcolumn=81
+  execute "set undodir=" . g:vim_home_path . "/undo"
+  set undofile
+  set undoreload=10000
 endif
 "------------------------------------------------
 "" Plugin settings
