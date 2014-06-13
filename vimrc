@@ -132,6 +132,12 @@ highlight ColorColumn     ctermbg=darkgray
 highlight ExtraWhitespace ctermbg=red guibg=red
 "
 
+" Better diff colors
+highlight DiffAdd    cterm=bold ctermfg=black ctermbg=darkgreen gui=bold guifg=black guibg=darkgreen
+highlight DiffChange cterm=bold ctermfg=black ctermbg=darkblue
+highlight DiffText   cterm=bold ctermfg=black ctermbg=lightgray
+highlight DiffDelete cterm=bold ctermfg=black ctermbg=darkred
+
 " Easier visual indent
 vnoremap < <gv
 vnoremap > >gv
