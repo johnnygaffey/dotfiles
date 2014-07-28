@@ -36,5 +36,8 @@
     out = log --graph origin..HEAD
     outgoing = log --graph origin..HEAD
     vimdiff = difftool --tool=vimdiff --no-prompt
+    unstage = reset HEAD --
+    last = log -1 HEAD
+    uncommit = reset --soft 'HEAD^'
 [push]
     default = current

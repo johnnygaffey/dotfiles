@@ -23,7 +23,10 @@ alias lr='ls -lR'                #recursive
 alias tree='tree -Csuh'          #alternative to recursive ls
 alias df='df -kTh'
 alias path='echo -e ${PATH//:/\\n}'
-alias grep='grep --color=auto'
+alias grep='grep -i --color=auto'
+
+#django aliases
+alias runserver = "./manage.py runserver"
 
 # Silly sudo
 alias salt='sudo salt'
@@ -43,6 +46,9 @@ alias vm="mv"
 if [ -f /usr/bin/fortune ]; then
     command fortune 95% calvin firefly
 fi
+
+# Custom functions
+[[ -f $HOME/.bash_functions ]] && source $HOME/.bash_functions
 
 parse_git_dirty ()
 {
@@ -79,8 +85,8 @@ export PS1="\n\[$e[35m\].-(\[$e[33m\]\u@\h \[$e[36m\]\t\[$e[35m\] \$(parse_git_b
 
 # virtualenvwrapper stuff.
 export WORKON_HOME=~/Envs
-if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
-  source /usr/local/bin/virtualenvwrapper.sh
+if [ -f /usr/bin/virtualenvwrapper.sh ]; then
+  source /usr/bin/virtualenvwrapper.sh
 fi
 export EDITOR=vim
 # Things for python virtualenv

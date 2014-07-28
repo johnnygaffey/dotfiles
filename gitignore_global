@@ -1,2 +1,3 @@
 *.pyenv
 *.swp
+*.py[ocd]

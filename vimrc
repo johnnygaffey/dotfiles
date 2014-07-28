@@ -22,12 +22,22 @@ Bundle 'saltstack/salt-vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'mileszs/ack.vim'
+Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
+Bundle 'sjl/gundo.vim'
+Bundle 'tpope/vim-eunuch'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-endwise'
+Bundle 'airblade/vim-gitgutter'
 Bundle 'walm/jshint.vim'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'ervandew/supertab'
 Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'michaeljsmith/vim-indent-object'
+Bundle 'Rykka/riv.vim'
 Bundle 'flazz/vim-colorschemes'
 
 filetype plugin indent on
@@ -117,8 +127,9 @@ autocmd BufReadPost *
 "Code Folding"
 """"""""""""""
 set foldmethod=indent
-set foldnestmax=3
-set foldlevel=99
+set foldlevel=999
+set foldmethod=syntax
+
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
 
@@ -192,3 +203,35 @@ if 'VIRTUAL_ENV' in os.environ:
     execfile(activate_this, dict(__file__=activate_this))
 EOF
 endif
+
+" Line number settings
+set relativenumber     " Start with relative numbers
+set numberwidth=3      " Use 3 columns for numbers
+
+" Gundo settings
+let g:gundo_preview_bottom = 1
+let g:gundo_right = 1
+let g:gundo_help = 0
+let g:gundo_width = 25
+let g:gundo_preview_height = 10
+
+" Treat all html as htmldjango
+autocmd BufNewFile,BufRead *.html set filetype=htmldjango
+
+" Command to write as root if forgot to open with sudo
+cmap w!! %!sudo tee > /dev/null %
+
+" Key bindings
+noremap <silent><leader>/ :nohlsearch<Bar>:echo<CR>
+nnoremap <F2> :call NumberToggle()<cr>
+map <F3> :set wrap! wrap?<CR>
+map <F4> :set hlsearch! hlsearch?<CR>
+map <F5> :edit <CR>
+map <F6> :edit! <CR>
+nmap <F12> :NERDTreeTabsToggle <CR>
+nmap <F7> :GundoToggle <CR>
+map <F8> :set expandtab! expandtab?<CR>
+map <F9> :set paste! paste?<CR>
+map <F10> :set cursorline! cursorline?<CR>
+map <F11> :set spell! spell?<CR>
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
