@@ -25,9 +25,6 @@ alias df='df -kTh'
 alias path='echo -e ${PATH//:/\\n}'
 alias grep='grep -i --color=auto'
 
-#django aliases
-alias runserver = "./manage.py runserver"
-
 # Silly sudo
 alias salt='sudo salt'
 

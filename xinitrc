@@ -34,4 +34,6 @@ xrandr --output DVI-I-1 --auto
 xrandr --output DP-1 --auto --left-of DVI-I-1 --rotate left
 xrandr --output DVI-D-0 --auto --right-of DVI-I-1 --rotate left
 
+ssh-add
+
 exec /usr/bin/spectrwm 2&> $HOME/.spectrwm.log

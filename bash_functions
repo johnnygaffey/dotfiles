@@ -28,4 +28,10 @@ function rmpyc() {
     find . -name "*.pyc" -exec rm -rf {} \;
 }
 
-
+function cd(){
+    if [[ $# -eq 0 ]]; then
+        builtin cd $(git rev-parse --show-toplevel 2> /dev/null)
+    else
+        builtin cd "$@"
+    fi
+}
