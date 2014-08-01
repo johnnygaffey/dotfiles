@@ -10,41 +10,8 @@ PATH="/sbin:/usr/sbin:$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 [[ -f $HOME/.bash_prompt ]] && source $HOME/.bash_prompt
 
-# Aliases
-alias ls='ls -F --color=auto'    #colors
-alias l='ls -F --color=auto'    #colors
-alias ll='ls -lsah --color=auto'  #long list
-alias la='ls -AF --color=auto'  #show hidden
-alias lx='ls -lXB --color=auto'  #sort by sextension
-alias lk='ls -lSr --color=auto'  #sort by size biggest last
-alias lc='ls -ltcr --color=auto' #sort by and show chagne times
-alias lu='ls -ltur --color=auto' #sort by and show access time
-alias lt='ls -ltr --color=auto'  #sort by date
-alias lm='ls -al |more'          #pipe through more
-alias lr='ls -lR'                #recursive
-alias tree='tree -Csuh'          #alternative to recursive ls
-alias df='df -kTh'
-alias path='echo -e ${PATH//:/\\n}'
-alias grep='grep -i --color=auto'
-alias runserver="python manage.py runserver"
-alias prunserver="python manage.py runserver 0.0.0.0:8000"
-alias mcb_runserver="python manage_website_coupon_buddy.py runserver"
-alias mcb_prunserver="python manage_website_coupon_buddy.py runserver 0.0.0.0:8182"
+[[ -f $HOME/.bash_alias ]] && source $HOME/.bash_alias
 
-# Silly sudo
-alias salt='sudo salt'
-
-# Program defaults
-alias bundleupdate='vim -c BundleUpdate -c qa'
-
-# To keep typos alive
-alias snv="svn"
-alias cim="vim"
-alias bim="vim"
-alias svim="vim"
-alias suod="sudo"
-alias sduo="sudo"
-alias vm="mv"
 
 if [ -f /usr/bin/fortune ]; then
     command fortune 95% calvin firefly
