@@ -26,6 +26,10 @@ alias tree='tree -Csuh'          #alternative to recursive ls
 alias df='df -kTh'
 alias path='echo -e ${PATH//:/\\n}'
 alias grep='grep -i --color=auto'
+alias runserver="python manage.py runserver"
+alias prunserver="python manage.py runserver 0.0.0.0:8000"
+alias mcb_runserver="python manage_website_coupon_buddy.py runserver"
+alias mcb_prunserver="python manage_website_coupon_buddy.py runserver 0.0.0.0:8182"
 
 # Silly sudo
 alias salt='sudo salt'
@@ -49,8 +53,6 @@ fi
 # Custom functions
 [[ -f $HOME/.bash_functions ]] && source $HOME/.bash_functions
 
-
-
 # don't put duplicate lines in the history. See bash(1) for more options
 # don't overwrite GNU Midnight Commander's setting of `ignorespace'.
 export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
@@ -72,15 +74,7 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
-e=\\\033
-export PS1="\n\[$e[35m\].-(\[$e[33m\]\u@\h \[$e[36m\]\t\[$e[35m\] \$(parse_git_branch))\[$e[0m\]\w\n\[$e[35m\]\\\`-->\[$e[0m\] "
-
 export EDITOR=vim
 
 unset LD_PRELOAD
-alias runserver="python manage.py runserver"
-alias prunserver="python manage.py runserver 0.0.0.0:8000"
-alias mcb_runserver="python manage_website_coupon_buddy.py runserver"
-alias mcb_prunserver="python manage_website_coupon_buddy.py runserver 0.0.0.0:8182"
-
 [[ -f /etc/profile.d/bash-completion.sh ]] && source /etc/profile.d/bash-completion.sh
