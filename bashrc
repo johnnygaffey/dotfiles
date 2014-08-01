@@ -1,12 +1,14 @@
+[[ -f /etc/bash/bashrc ]] && . /etc/bash/bashrc
+
+# Exit if non-interactive
+[[ $- != *i* ]] && return
+
 #vim mode in the shell
 set -o vi
 
-# use .localrc for settings specific to one system
-if [ -f ~/.localrc ]; then
-  source ~/.localrc
-fi
-
 PATH="/sbin:/usr/sbin:$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+[[ -f $HOME/.bash_prompt ]] && source $HOME/.bash_prompt
 
 # Aliases
 alias ls='ls -F --color=auto'    #colors
@@ -47,14 +49,7 @@ fi
 # Custom functions
 [[ -f $HOME/.bash_functions ]] && source $HOME/.bash_functions
 
-parse_git_dirty ()
-{
-    [[ $(/usr/bin/git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "*"
-}
-parse_git_branch ()
-{
-    /usr/bin/git branch 2> /dev/null | grep '*' | sed "s/*\ \(.*\)/$(parse_git_dirty)\1/"
-}
+
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # don't overwrite GNU Midnight Commander's setting of `ignorespace'.
@@ -80,16 +75,7 @@ fi
 e=\\\033
 export PS1="\n\[$e[35m\].-(\[$e[33m\]\u@\h \[$e[36m\]\t\[$e[35m\] \$(parse_git_branch))\[$e[0m\]\w\n\[$e[35m\]\\\`-->\[$e[0m\] "
 
-# virtualenvwrapper stuff.
-export WORKON_HOME=~/Envs
-if [ -f /usr/bin/virtualenvwrapper.sh ]; then
-  source /usr/bin/virtualenvwrapper.sh
-fi
 export EDITOR=vim
-# Things for python virtualenv
-export PIP_REQUIRE_VIRTUALENV=true
-export PIP_RESPECT_VIRTUALENV=true
-[[ -f /usr/bin/urxvt ]] || export TERM=xterm-256color
 
 unset LD_PRELOAD
 alias runserver="python manage.py runserver"

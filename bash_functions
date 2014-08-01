@@ -22,6 +22,11 @@ function ve() {
 
     # Install dev_requirements.txt if available
     [[ -f dev_requirements.txt ]] && $(which pip) install -r dev_requirements.txt &> /dev/null
+
+    if [[ -f monetization/requirements/apps.txt ]]; then
+        $(which pip) install --upgrade setuptools
+        $(which pip) install -r monetization/requirements/apps.txt 
+    fi
 }
 
 function rmpyc() {
