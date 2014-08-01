@@ -2,8 +2,8 @@ local Time12a="\$(date +%H:%M)"
 local PathShort="\w"
 
 # These are the color definitions used by gitprompt.sh
-GIT_PROMPT_PREFIX="["                 # start of the git info string
-GIT_PROMPT_SUFFIX="]"                 # the end of the git info string
+GIT_PROMPT_PREFIX=""                 # start of the git info string
+GIT_PROMPT_SUFFIX=""                 # the end of the git info string
 GIT_PROMPT_SEPARATOR="|"              # separates each item
 
 GIT_PROMPT_BRANCH="${Magenta}"        # the git branch that is active in the current directory
@@ -19,9 +19,11 @@ GIT_PROMPT_CLEAN="${BoldGreen}✔"      # a colored flag indicating a "clean" re
 GIT_PROMPT_COMMAND_OK="${Green}✔ "    # indicator if the last command returned with an exit code of 0
 GIT_PROMPT_COMMAND_FAIL="${Red}✘ "   # indicator if the last command returned with an exit code of other than 0
 
-GIT_PROMPT_START_USER="${Yellow}${PathShort}${ResetColor}"
+#GIT_PROMPT_START_USER="${Yellow}${PathShort}${ResetColor}"
+GIT_PROMPT_START_USER="\n${Magenta}.-(${Cyan}\u${White}@${Red}\h ${BoldBlue}\t${ResetColor}"
 GIT_PROMPT_START_ROOT="${Yellow}${PathShort}${ResetColor}"
-GIT_PROMPT_END_USER=" \n${White}${Time12a}${ResetColor} $ "
+#GIT_PROMPT_END_USER=" \n${White}${Time12a}${ResetColor} $ "
+GIT_PROMPT_END_USER=" ${Magenta})${ResetColor}\w\n${Magenta}\\\`-->${ResetColor} "
 GIT_PROMPT_END_ROOT=" \n${White}${Time12a}${ResetColor} # "
 
 # Please do not add colors to these symbols
