@@ -29,6 +29,7 @@ else
     alias lr='ls -lR'                #recursive
 fi
 
+alias ssh_seedbox='ssh 192.99.35.183 -p 21976'
 alias tree='tree -Csuh'          #alternative to recursive ls
 alias df='df -kTh'
 alias path='echo -e ${PATH//:/\\n}'
