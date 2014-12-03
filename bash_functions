@@ -20,10 +20,10 @@ function ve() {
 
     fi
     # Install requirements.txt if available
-    [[ -f $git_top_level/requirements.txt ]] && $(which pip) install -r $git_top_level/requirements.txt &> /dev/null
+    [[ -f $git_top_level/requirements.txt ]] && $(which pip) install -r $git_top_level/requirements.txt
 
     # Install dev_requirements.txt if available
-    [[ -f $git_top_level/dev_requirements.txt ]] && $(which pip) install -r $git_top_level/dev_requirements.txt &> /dev/null
+    [[ -f $git_top_level/dev_requirements.txt ]] && $(which pip) install -r $git_top_level/dev_requirements.txt
 
     if [[ -f $git_top_level/monetization/requirements/apps.txt ]]; then
         $(which pip) install --upgrade setuptools

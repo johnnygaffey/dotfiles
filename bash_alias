@@ -32,7 +32,7 @@ fi
 alias tree='tree -Csuh'          #alternative to recursive ls
 alias df='df -kTh'
 alias path='echo -e ${PATH//:/\\n}'
-alias grep='grep -i --color=auto'
+alias grep='grep -ni --color=auto'
 alias runserver="python manage.py runserver"
 alias prunserver="python manage.py runserver 0.0.0.0:8000"
 alias mcb_runserver="python manage_website_coupon_buddy.py runserver"
