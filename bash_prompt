@@ -2,7 +2,7 @@
 
 jobscount() {
     local background=$(jobs -p | wc -l)
-    ((background)) && echo -n "(${background})"
+    ((background)) && echo -n " (${background})"
 }
 
 # If sshed include hostname
