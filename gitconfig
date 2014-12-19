@@ -22,7 +22,17 @@
 [log]
     decorate = full
 [alias]
-    glog = log --graph
+    ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate                        ; Log one per line
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat              ; Log one per line with files changed
+    lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short    ; Log one per line with dates
+    ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative  ; Log one per line with relative dates
+    glog = log --graph                    ; Graph log
+    filelog = log -u                      ; Log for file
+    fl = log -u                           ; Log for file
+    dl = "!git ll -1"                     ; Show modified files in last commit
+    dlc = diff --cached HEAD^             ; Show diff of last commit
+    f = "!git ls-files | grep -i"         ; Find a file in a codebase
+    la = "!git config -l | grep alias | cut -c 7-"   ; List aliases
     st = status
     ci = commit -a
     up = checkout
@@ -32,10 +42,14 @@
     bo = branch
     bookmarks = branch
     branches = branch
-    o = log --graph origin..HEAD
-    out = log --graph origin..HEAD
-    outgoing = log --graph origin..HEAD
+    o = log --graph @{u}..HEAD
+    out = log --graph @{u}..HEAD
+    outgoing = log --graph @{u}..HEAD
+    in = log --graph HEAD..@{u}
+    incoming = log --graph HEAD..@{u}
     vimdiff = difftool --tool=vimdiff --no-prompt
+    rpo = remote prune origin
+    pb = "!git branch --merged | grep -v "\\*" | xargs -n 1 git branch -d"
     unstage = reset HEAD --
     last = log -1 HEAD
     uncommit = reset --soft 'HEAD^'
