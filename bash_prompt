@@ -1,5 +1,33 @@
 # vim: set filetype=sh :
 
+jobscount() {
+    local background=$(jobs -p | wc -l)
+    ((background)) && echo -n "(${background})"
+}
+
+# If sshed include hostname
+if [[ "$SSH_CLIENT" ]]; then
+    PS1="\[\e[0;31m\]\h$PS1"
+    # Set host and pwd in X window title
+    case ${TERM} in
+        xterm*|rxvt*)
+            PROMPT_COMMAND='echo -ne "\033]0;${HOSTNAME}|${PWD/#$HOME/~}\007"'
+            ;;
+        screen*)
+            PROMPT_COMMAND='echo -ne "\033_;${HOSTNAME}|${PWD/#$HOME/~}\033\\"'
+            ;;
+    esac
+else
+    # Set pwd in X window title
+    case ${TERM} in
+        xterm*|rxvt*)
+            PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007"'
+            ;;
+        screen*)
+            PROMPT_COMMAND='echo -ne "\033_;${PWD/#$HOME/~}\033\\"'
+            ;;
+    esac
+fi
 # Fancy git prompt if installed
 if [[ -f $HOME/.bash-git-prompt/gitprompt.sh ]]; then
     source $HOME/.bash-git-prompt/gitprompt.sh
