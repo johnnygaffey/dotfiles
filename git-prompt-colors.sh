@@ -21,7 +21,7 @@ GIT_PROMPT_COMMAND_FAIL="${Red}✘ "   # indicator if the last command returned 
 
 #GIT_PROMPT_START_USER="${Yellow}${PathShort}${ResetColor}"
 if [[ "$SSH_CLIENT" ]]; then
-    GIT_PROMPT_START_USER="${Red}\h${ResetColor}"
+    GIT_PROMPT_START_USER="${Red}\h${ResetColor} "
 else
     GIT_PROMPT_START_USER=""
 fi
