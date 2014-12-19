@@ -1,6 +1,5 @@
 # vim: set filetype=sh :
 
-# Aliases
 # ls
 if [[ -f /usr/bin/ls++ ]]; then
     alias ls='ls -F --color=auto'    #colors
@@ -15,7 +14,6 @@ if [[ -f /usr/bin/ls++ ]]; then
     alias lm='ls++ --potsf -a |more'          #pipe through more
     alias lr='ls++ --potsf -R'                #recursive
 else
-
     alias ls='ls -F --color=auto'    #colors
     alias l='ls -F --color=auto'    #colors
     alias ll='ls -lsah --color=auto'  #long list
@@ -29,17 +27,18 @@ else
     alias lr='ls -lR'                #recursive
 fi
 
-alias ssh_sb='ssh 192.99.35.183 -p 21976'
 alias tree='tree -Csuh'          #alternative to recursive ls
 alias df='df -kTh'
 alias path='echo -e ${PATH//:/\\n}'
-alias grep='grep -ni --color=auto'
+alias lgrep='grep -ni --color=auto'
+alias igrep='grep -i --color=auto'
+alias grep='grep --color=auto'
+
+#Django
 alias runserver="python manage.py runserver"
 alias prunserver="python manage.py runserver 0.0.0.0:8000"
 alias mcb_runserver="python manage_website_coupon_buddy.py runserver"
 alias mcb_prunserver="python manage_website_coupon_buddy.py runserver 0.0.0.0:8182"
-
-
 
 # Silly sudo
 alias mount='sudo mount'
