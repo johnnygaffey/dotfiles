@@ -27,7 +27,7 @@ else
 fi
 GIT_PROMPT_START_ROOT="${Yellow}${PathShort}${ResetColor}"
 #GIT_PROMPT_END_USER=" \n${White}${Time12a}${ResetColor} $ "
-GIT_PROMPT_END_USER="${IntenseBlack}$(jobscount) ${White}-> ${ResetColor}"
+GIT_PROMPT_END_USER="${IntenseBlack}$(jobscount) ${Cyan}\W ${White}-> ${ResetColor}"
 GIT_PROMPT_END_ROOT=" \n${White}${Time12a}${ResetColor} # "
 
 # Please do not add colors to these symbols
