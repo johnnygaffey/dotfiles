@@ -42,3 +42,19 @@ function cd(){
         builtin cd "$@"
     fi
 }
+
+function ws () {
+    if [[ $1 ]]; then
+        cd ~/projects/$1
+        [[ -f "$PWD/requirements.txt" ]] && ve
+    fi
+}
+
+function vws () {
+    if [[ $1 ]]; then
+        cd ~/projects/$1
+        if [[ -f "$PWD/vagrantfile" || -f "$PWD/Vagrantfile" ]]; then
+            vagrant up && vagrant ssh -p
+        fi
+    fi
+}
