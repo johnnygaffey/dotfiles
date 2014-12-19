@@ -1,0 +1,20 @@
+# vim: set filetype=sh :
+
+[[ -f /usr/bin/gulp ]] && eval "$(gulp --completion=bash)"
+
+__ws_comp()
+{
+    local cur=${COMP_WORDS[COMP_CWORD]}
+
+    words=$(\ls ~/projects)
+    COMPREPLY=( $(compgen -W "$words" -- $cur) )
+}
+complete -F __ws_comp ws
+
+__vws_comp()
+{
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    words=$(find ~/projects -maxdepth 2 -iname 'vagrantfile' -printf '%h ' | xargs -n1 basename)
+    COMPREPLY=( $(compgen -W "$words" -- $cur) )
+}
+complete -F __vws_comp vws
