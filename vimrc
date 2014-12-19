@@ -138,7 +138,7 @@ autocmd BufWinEnter *.* silent loadview
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLOR SCHEME
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-colorscheme 256-jungle
+colorscheme lucius
 
 highlight OverLength      ctermbg=red
 highlight ColorColumn     ctermbg=darkgray
@@ -173,6 +173,15 @@ if exists('+colorcolumn')
   set undofile
   set undoreload=10000
 endif
+
+" Show extra which space and over 80
+match OverLength /\%80v.\+/
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
 "------------------------------------------------
 "" Plugin settings
 "------------------------------------------------
