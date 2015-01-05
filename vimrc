@@ -39,7 +39,6 @@ Bundle 'davidhalter/jedi-vim'
 Bundle 'ervandew/supertab'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'michaeljsmith/vim-indent-object'
-Bundle 'Rykka/riv.vim'
 Bundle 'flazz/vim-colorschemes'
 
 filetype plugin indent on
