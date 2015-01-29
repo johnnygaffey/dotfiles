@@ -107,6 +107,10 @@ fi
 
 if [[ ! -d "$HOME/.bash-git-prompt" ]]; then
     git clone https://github.com/magicmonty/bash-git-prompt.git "$HOME/.bash-git-prompt"
+else
+    pushd $HOME/.bash-git-prompt
+    git pull
+    popd
 fi
 
 if [[ ! -d "$HOME/.vim/bundle/vundle" ]]; then
