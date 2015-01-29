@@ -32,12 +32,6 @@ override_git_prompt_colors() {
     ## the name of the current virtual environment (currently CONDA and VIRTUAL_ENV)
     GIT_PROMPT_VIRTUALENV=""
 
-    # Prompt
-    if [[ "$SSH_CLIENT" ]]; then
-        GIT_PROMPT_START_USER="${Red}\h${ResetColor} "
-    else
-        GIT_PROMPT_START_USER=""
-    fi
     GIT_PROMPT_START_ROOT="${Yellow}${PathShort}${ResetColor}"
     GIT_PROMPT_END_USER="${IntenseBlack} $(jobscount)${Cyan}\W ${White}-> ${ResetColor}"
     GIT_PROMPT_END_ROOT=" \n${White}${Time12a}${ResetColor} # "
@@ -53,6 +47,12 @@ override_git_prompt_colors() {
 
 reload_git_prompt_colors "j5"
 
+# Prompt
+if [[ "$SSH_CLIENT" ]]; then
+    GIT_PROMPT_START_USER="${Red}\h${ResetColor} "
+else
+    GIT_PROMPT_START_USER=""
+fi
 GIT_PROMPT_PREFIX=""                 # start of the git info string
 GIT_PROMPT_SUFFIX=""                 # the end of the git info strin
 GIT_PROMPT_VIRTUALENV=""
