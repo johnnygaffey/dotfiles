@@ -40,7 +40,7 @@ Bundle 'ervandew/supertab'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'flazz/vim-colorschemes'
-Bundle 'kien/ctrlp'
+Bundle 'kien/ctrlp.vim'
 
 " My Bundle
 Bundle 'johnnygaffey/vim-j5'
