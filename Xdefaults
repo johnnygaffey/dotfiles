@@ -4,7 +4,8 @@ URxvt.url-select.launcher: /usr/bin/firefox -new-tab
 URxvt.url-select.underline: true
 URxvt.scrollsytle:xterm
 URxvt.scrollBar:false
-URxvt.font:-*-terminus-medium-*-*-*-14-*-*-*-*-*-*-*
+!URxvt.font:-*-terminus-medium-*-*-*-14-*-*-*-*-*-*-*
+URxvt.font: xft:DejaVu Sans Mono:pixelsize=14
 URxvt.urgentOnBell: true
 ! :Bind C-0, C-+ and C-= to activate small, medium, and big font size resp.
 URxvt.keysym.C-0: command:\033]710;-*-terminus-medium-*-*-*-14-*-*-*-*-*-*-*\007
