@@ -1,52 +1,47 @@
 set nocompatible
 filetype off
 
-" vundle configuration "
-if has("win32")
-    let g:vim_home_path = "~/vimfiles"
-else
-    let g:vim_home_path = "~/.vim"
-endif
-
-execute "set rtp+=" . g:vim_home_path . "/bundle/vundle/"
+set rtp+=~/.vim/bundle/Vundle.vim
 let g:vundle_default_git_proto = 'https'
-call vundle#rc(g:vim_home_path. "/bundle")
+call vundle#begin()
 
-" Bundles to install
-Bundle 'gmarik/vundle'
+" Plugins to install
+Plugin 'VundleVim/Vundle.vim'
 
 " Syntax/filetype detection
-Bundle 'saltstack/salt-vim'
+Plugin 'saltstack/salt-vim'
 
 " Helpful plugins
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'mileszs/ack.vim'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'sjl/gundo.vim'
-Bundle 'tpope/vim-abolish'
-Bundle 'tpope/vim-eunuch'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-endwise'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'walm/jshint.vim'
-Bundle 'davidhalter/jedi-vim'
-Bundle 'ervandew/supertab'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'michaeljsmith/vim-indent-object'
-Bundle 'flazz/vim-colorschemes'
-Bundle 'kien/ctrlp.vim'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'Lokaltog/vim-powerline'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'mileszs/ack.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'sjl/gundo.vim'
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-endwise'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'walm/jshint.vim'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'ervandew/supertab'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'kien/ctrlp.vim'
 
-" My Bundle
-Bundle 'johnnygaffey/vim-j5'
+" My Plugin
+Plugin 'johnnygaffey/vim-j5'
+
+call vundle#end()
 
 filetype plugin indent on
 
-if filereadable(expand(g:vim_home_path . "/bundle/vim-j5/vimrc.vim"))
-    execute "source " . g:vim_home_path . "/bundle/vim-j5/vimrc.vim"
+if filereadable(expand("~/.vim/bundle/vim-j5/vimrc.vim"))
+    execute "source ~/.vim/bundle/vim-j5/vimrc.vim"
 endif

@@ -43,7 +43,12 @@ fi
 
 export EDITOR=vim
 
-unset LD_PRELOAD
+# For spectrwm
+if [[ -f /usr/lib64/libswmhack.so ]]; then
+    LD_PRELOAD='/usr/lib64/libswmhack.so'
+else
+    unset LD_PRELOAD
+fi
 [[ -f /etc/profile.d/bash-completion.sh ]] && source /etc/profile.d/bash-completion.sh
 
 # Completions not managed via Gentoo

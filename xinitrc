@@ -31,7 +31,7 @@ feh --bg-fill ~/wallpapers/wallpaper.jpg
 xset +fp /usr/share/fonts/terminus/
 
 xrandr --output DVI-I-1 --auto
-xrandr --output DP-1 --auto --left-of DVI-I-1 --rotate left
+xrandr --output DP-1 --auto --left-of DVI-I-1
 xrandr --output DVI-D-0 --auto --right-of DVI-I-1 --rotate left
 
 ssh-add
