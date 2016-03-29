@@ -102,13 +102,10 @@ function ve() {
 
     # If this virtualenv is not active
     if [[ "$VIRTUAL_ENV" != "$ve_root/.pyenv/$venv_name" ]]; then
-
         # Deactivate current virtualenv
         [[ $VIRTUAL_ENV ]] && deactivate
-
         # Create new virtualenv if needed
         [[ ! -f $ve_root/.pyenv/$venv_name/bin/activate ]] && rm -rf $ve_root/.pyenv/$venv_name && virtualenv $ve_root/.pyenv/$venv_name &> $redirect
-
         # Activate virtualenv
         source $ve_root/.pyenv/$venv_name/bin/activate
 
@@ -117,24 +114,38 @@ function ve() {
     # Ensure using correct pip
     pip_bin=$(which pip)
 
-    if [[ $1 ]]; then
-        # Install custom requirements.txt if available
-        [[ -f $ve_root/${1}_requirements.txt ]] && $pip_bin install -r $ve_root/${1}_requirements.txt &> $redirect
+    if [[ $allow_sync -eq 1 ]] && [[ -f $ve_root/requirements.in ]]; then
+        # Ensure pip-tools is installed
+        $pip_bin install pip-tools &> $redirect
+
+        # Get all requirements that should be synced or reinstalled after sync
+        sync_reqs="$ve_root/requirements.txt "
+        re_install=""
+        if [[ -f $ve_root/dev_requirements.in ]]; then
+            sync_reqs+="$ve_root/dev_requirements.txt "
+        elif [[ -f $ve_root/dev_requirements.txt ]]; then
+            re_install+="-r $ve_root/dev_requirements.txt "
+        fi
+        if [[ -f $ve_root/doc_requirements.in ]]; then
+            sync_reqs+="$ve_root/doc_requirements.txt "
+        elif [[ -f $ve_root/doc_requirements.txt ]]; then
+            re_install+="-r $ve_root/doc_requirements.txt "
+        fi
+
+        pip-sync $sync_reqs &> $redirect
+
+        # Reinstall reqs that may have been uninstalled by sync
+        [[ -n $re_install ]] && $pip_bin install $re_install &> $redirect
     else
         # Install dev_requirements.txt if available
         [[ -f $ve_root/dev_requirements.txt ]] && $pip_bin install -r $ve_root/dev_requirements.txt &> $redirect
 
-        # Use pip-sync if available.
-        if [[ $allow_sync -eq 1 ]] && which pip-sync >/dev/null 2>&1; then
-            [[ -f $ve_root/requirements.txt ]] && pip-sync $ve_root/requirements.txt &> $redirect
-            # Install dev_requirements again since pip-sync probably removes them :(
-            [[ -f $ve_root/dev_requirements.txt ]] && $pip_bin install -r $ve_root/dev_requirements.txt &> $redirect
-        else
-            # Install requirements.txt if available
-            [[ -f $ve_root/requirements.txt ]] && $pip_bin install -r $ve_root/requirements.txt &> $redirect
-        fi
-    fi
+        # Install requirements.txt if available
+        [[ -f $ve_root/requirements.txt ]] && $pip_bin install -r $ve_root/requirements.txt &> $redirect
 
+        # Install doc_requirements.txt if available
+        [[ -f $ve_root/doc_requirements.txt ]] && $pip_bin install -r $ve_root/doc_requirements.txt &> $redirect
+    fi
 }
 
 function ws () {
