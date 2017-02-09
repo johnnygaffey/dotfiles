@@ -3,3 +3,8 @@
 *.py[ocd]
 *.orig
 *.tox
+.idea/
+.env
+db.sqlite3
+kiswe-thor
+

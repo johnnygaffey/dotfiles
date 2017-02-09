@@ -53,3 +53,6 @@ fi
 
 # Completions not managed via Gentoo
 [[ -f $HOME/.bash_comp ]] && source $HOME/.bash_comp
+
+export NVM_DIR="/home/johnnyg/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
