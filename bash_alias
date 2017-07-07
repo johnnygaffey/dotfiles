@@ -14,15 +14,15 @@ if [[ -f /usr/bin/ls++ ]]; then
     alias lm='ls++ --potsf -a |more'          #pipe through more
     alias lr='ls++ --potsf -R'                #recursive
 else
-    alias ls='ls -F --color=auto'    #colors
-    alias l='ls -F --color=auto'    #colors
-    alias ll='ls -lsah --color=auto'  #long list
-    alias la='ls -AF --color=auto'  #show hidden
-    alias lx='ls -lXB --color=auto'  #sort by sextension
-    alias lk='ls -lSr --color=auto'  #sort by size biggest last
-    alias lc='ls -ltcr --color=auto' #sort by and show chagne times
-    alias lu='ls -ltur --color=auto' #sort by and show access time
-    alias lt='ls -ltr --color=auto'  #sort by date
+    alias ls='ls -FG'    #colors
+    alias l='ls -FG'    #colors
+    alias ll='ls -lsahG'  #long list
+    alias la='ls -AFG'  #show hidden
+    alias lx='ls -lXBG'  #sort by sextension
+    alias lk='ls -lSrG'  #sort by size biggest last
+    alias lc='ls -ltcrG' #sort by and show chagne times
+    alias lu='ls -lturG' #sort by and show access time
+    alias lt='ls -ltrG'  #sort by date
     alias lm='ls -al |more'          #pipe through more
     alias lr='ls -lR'                #recursive
 fi
