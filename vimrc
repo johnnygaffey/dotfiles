@@ -45,3 +45,5 @@ filetype plugin indent on
 if filereadable(expand("~/.vim/bundle/vim-j5/vimrc.vim"))
     execute "source ~/.vim/bundle/vim-j5/vimrc.vim"
 endif
+
+set belloff=all
